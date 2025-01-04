@@ -1,0 +1,1 @@
+GET https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=fr&dt=t&q=good%20morning
