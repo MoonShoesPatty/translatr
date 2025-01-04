@@ -13,9 +13,22 @@
   width: 100%;
 }
 
-.translateForm {
+.translateRow {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   padding: 15px;
+}
+
+.textInput {
+  margin-left: 10px;
+  width: 100%;
+}
+
+.buttonsContainer button {
+  margin-right: 10px;
+}
+
+.buttonsContainer button:last-child {
+  margin-right: 0;
 }

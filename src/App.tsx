@@ -1,8 +1,6 @@
-// import { useState } from 'react'
-import './App.css'
-import Translator from './components/translator/translator.component';
+import './App.css';
 import LanguageRow from './components/languageRow/languageRow.component';
-import { FormEvent, MouseEvent, useState } from 'react';
+import { ChangeEvent, FormEvent, MouseEvent, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { Row } from './models';
 import LangDropdown from './components/langDropdown/langDropdown.component';
@@ -10,13 +8,21 @@ import LangDropdown from './components/langDropdown/langDropdown.component';
 function App() {
   const [rows, setRows] = useState([] as Row[]);
   const [initialLang, setInitialLang] = useState('en');
+  const [inputText, setInputText] = useState('');
 
   const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-
-    console.log(e);
-    addRow();
-    console.log(rows);
+    switch ((e.target as HTMLButtonElement).value) {
+      case 'translate':
+        doTranslation();
+        break;
+      case 'addRow':
+        addRow();
+        break;
+      default:
+        console.error('Oops! No action there, chief');
+        break;
+    }
   }
 
   const addRow = () => {
@@ -32,25 +38,11 @@ function App() {
     })
   }
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    const form = e.target as HTMLFormElement;
-    const inputText = new FormData(form).get('textIn') as string;
-
-    doTranslation(inputText);
-
-    // console.log(`Final out: ${t3}`);
-  }
-
-  const doTranslation = async (queryText: string): Promise<string> => {
+  const doTranslation = async (): Promise<string> => {
     let sourceLang = initialLang;
+    let queryText = inputText;
     for (let i = 0; i < rows.length; i++) {
-      // const row = rows[i];
       const destLang = rows[i].language;
-      console.log(`======================`);
-      console.log(`Translate from ${sourceLang} to ${destLang}`);
-      console.log(`Translate: ${queryText}`);
       const reqUrl = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${sourceLang}&tl=${destLang}&dt=t&q=${queryText}`;
       const response = await fetch(reqUrl);
       const result = await response.json();
@@ -63,10 +55,12 @@ function App() {
       setRows([...rows]);
     }
 
-    // console.log(`${sourceLang.toLocaleUpperCase()}: ${t01[0][0][1]}`);
-    // console.log(`${destLang.toLocaleUpperCase()}: ${t01[0][0][0]}`);
-
     return new Promise((resolve) => resolve(''));
+  }
+
+  const handleQueryChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    e.preventDefault();
+    setInputText((e.target as HTMLTextAreaElement).value)
   }
 
 
@@ -74,17 +68,29 @@ function App() {
     <>
       <h1>Translatr</h1>
 
-      <form className='translateForm' onSubmit={handleSubmit}>
+      <div className='translateRow'>
         <LangDropdown setLanguage={(lang: string) => { setInitialLang(lang) }} />
-        <textarea name="textIn"></textarea>
-        <button type="submit">Translate</button>
-      </form>
+        <textarea
+          className='textInput'
+          name="textIn"
+          rows={5}
+          placeholder='Translate something!'
+          onChange={handleQueryChange}
+        ></textarea>
+      </div>
+
       <div className="rowsContainer">
         {buildRows()}
       </div>
-      <button onClick={handleClick} value='addRow'>
-        Add row
-      </button>
+
+      <div className="buttonsContainer">
+        <button onClick={handleClick} value='translate'>
+          Translate
+        </button>
+        <button onClick={handleClick} value='addRow'>
+          Add row
+        </button>
+      </div>
     </>
   )
 }

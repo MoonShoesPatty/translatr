@@ -15,8 +15,7 @@ function LangDropdown({setLanguage}: Props) {
   }
 
   const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    e.preventDefault()
-    console.log('change places!');
+    e.preventDefault();
     setLanguage(e.target.value);
   }
 
