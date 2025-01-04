@@ -1,15 +1,14 @@
+
+import './langDropdown.component.css';
 import { ChangeEvent, ChangeEventHandler, Dispatch, SetStateAction } from 'react';
 import languages from './languages.json';
-import { Row } from '../../models';
 
 interface Props {
-  setLanguage: any
+  setLanguage: (lang:string) => void
 }
 
 function LangDropdown({setLanguage}: Props) {
   const buildRows = () => {
-    console.log('============');
-    console.log('buildin\' them fuckin\' rows!');
     return languages.map((lang) => {
       return (<option key={lang.code} value={lang.code}>{lang.label}</option>)
     });
@@ -17,14 +16,13 @@ function LangDropdown({setLanguage}: Props) {
 
   const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
     e.preventDefault()
-    console.log(e)
-    setLanguage('beansecks');
-    // setLanguage('')
+    console.log('change places!');
+    setLanguage(e.target.value);
   }
 
   return (
     <>
-      <select name="languageInput" onChange={handleChange}>
+      <select name="languageInput" onChange={handleChange} defaultValue='en'>
         {buildRows()}
       </select>
     </>

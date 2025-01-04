@@ -12,3 +12,10 @@
   flex-direction: column;
   width: 100%;
 }
+
+.translateForm {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+}
