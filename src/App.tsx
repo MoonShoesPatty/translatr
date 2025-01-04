@@ -1,6 +1,6 @@
 import './App.css';
 import LanguageRow from './components/languageRow/languageRow.component';
-import { ChangeEvent, FormEvent, MouseEvent, useState } from 'react';
+import { ChangeEvent, MouseEvent, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { Row } from './models';
 import LangDropdown from './components/langDropdown/langDropdown.component';

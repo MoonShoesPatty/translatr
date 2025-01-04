@@ -1,6 +1,6 @@
 
 import './langDropdown.component.css';
-import { ChangeEvent, ChangeEventHandler, Dispatch, SetStateAction } from 'react';
+import { ChangeEvent } from 'react';
 import languages from './languages.json';
 
 interface Props {

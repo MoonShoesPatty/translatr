@@ -1,7 +1,6 @@
 import './languageRow.component.css'
 import LangDropdown from "../langDropdown/langDropdown.component";
 import { Row } from '../../models';
-import { useState } from 'react';
 
 interface Props {
   row: Row
