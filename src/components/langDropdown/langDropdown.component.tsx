@@ -1,13 +1,14 @@
 
 import './langDropdown.component.css';
 import { ChangeEvent } from 'react';
-import languages from './languages.json';
+import languages from '../../assets/languages.json';
 
 interface Props {
-  setLanguage: (lang:string) => void
+  setLanguage: (lang: string) => void;
+  defaultLanguage?: string;
 }
 
-function LangDropdown({setLanguage}: Props) {
+function LangDropdown({ setLanguage, defaultLanguage = 'en' }: Props) {
   const buildRows = () => {
     return languages.map((lang) => {
       return (<option key={lang.code} value={lang.code}>{lang.label}</option>)
@@ -21,7 +22,7 @@ function LangDropdown({setLanguage}: Props) {
 
   return (
     <>
-      <select name="languageInput" onChange={handleChange} defaultValue='en'>
+      <select name="languageInput" onChange={handleChange} defaultValue={defaultLanguage}>
         {buildRows()}
       </select>
     </>
