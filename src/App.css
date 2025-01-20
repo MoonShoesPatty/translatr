@@ -6,28 +6,3 @@
   text-align: center;
   box-sizing: border-box;
 }
-
-.rowsContainer {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-
-.translateRow {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 15px;
-}
-
-.textInput {
-  width: 100%;
-}
-
-.buttonsContainer button {
-  margin-right: 10px;
-}
-
-.buttonsContainer button:last-child {
-  margin-right: 0;
-}
