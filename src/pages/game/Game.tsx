@@ -1,8 +1,11 @@
+import { FormEvent } from 'react';
+import { GameRow } from '../../components/features/game/GameRow/GameRow';
+import { GuessRow } from '../../components/features/game/GuessRow/GuessRow';
+import { Button } from '../../components/ui/Button/Button';
+import { Input } from '../../components/ui/Input/Input';
+import { useGameState } from '../../hooks/useGameState';
+import type { Game, Clue } from '../../types';
 import './Game.css';
-import { FormEvent, useState } from 'react';
-import { Clue } from '@models/index';
-import GameRow from '@components/gameRow/gameRow.component';
-import GuessRow from '@components/guessRow/guessRow.component';
 
 const sourceGame = {
   category: 'General',
@@ -53,10 +56,7 @@ const sourceGame = {
 }
 
 function Game() {
-  const [game, setGame] = useState(sourceGame);
-  const [gameState, setGameState] = useState({
-    displayIndex: 3
-  });
+  const { game, gameState } = useGameState(sourceGame);
 
   const buildClueRows = (items: Clue[]) => {
     return items.slice(0, gameState.displayIndex).map((item, index) => {
@@ -73,7 +73,7 @@ function Game() {
   const buildGuesses = () => {
     return (
       <ul className='guessContainer'>
-        {game.rows.map((item, index) => {
+        {game.rows.map((_item: Clue, index: number) => {
           return (<li key={index}>O</li>)
         })}
       </ul>
@@ -87,18 +87,21 @@ function Game() {
   }
 
   return (
-    <>
+    <div className="game">
       <h1>Translatr</h1>
-      <p><b>{`Category: `}</b>{game.category}</p>
+      <p><b>Category: </b>{game.category}</p>
       <div className="contentContainer">
         <div className='rowsContainer'>
           {buildClueRows(game.rows)}
         </div>
         <form className='inputForm' onSubmit={handleSubmit}>
           <div className="inputContainer">
-            <p>Origin Phrase:</p>
-            <input type='text' />
-            <button>Guess</button>
+            <Input
+              label="Origin Phrase"
+              type='text'
+              placeholder="Enter your guess"
+            />
+            <Button type="submit">Guess</Button>
           </div>
           <div className="guessTracker">
             <p><b>Guesses</b></p>
@@ -110,7 +113,7 @@ function Game() {
           {buildGuessRows(game.rows)}
         </div>
       </div>
-    </>
+    </div>
   )
 }
 

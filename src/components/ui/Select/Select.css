@@ -1,0 +1,46 @@
+.select-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.select-label {
+  font-weight: 500;
+  color: #374151;
+  font-size: 0.875rem;
+}
+
+.select {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  font-size: 1rem;
+  background-color: white;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.select:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.select--error {
+  border-color: #ef4444;
+}
+
+.select--error:focus {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.select-error {
+  color: #ef4444;
+  font-size: 0.75rem;
+}
+
+.select-helper {
+  color: #6b7280;
+  font-size: 0.75rem;
+}
