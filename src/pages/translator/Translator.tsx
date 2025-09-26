@@ -4,7 +4,8 @@ import { ChangeEvent, MouseEvent, useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { Row } from '@models/index';
 import LangDropdown from '@components/langDropdown/langDropdown.component';
-import { getRandomLang } from '@services/language.service'
+import { getRandomLang, getRandomSeedPhrase } from '@services/language.service'
+import { Button, Textarea } from '@mantine/core';
 
 function Translator() {
   const [rows, setRows] = useState(ROWS_DEFAULT);
@@ -15,22 +16,7 @@ function Translator() {
     doTranslation();
   }, rows);
 
-  const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    switch ((e.target as HTMLButtonElement).value) {
-      case 'translate':
-        doTranslation();
-        break;
-      case 'addRow':
-        addRow();
-        break;
-      default:
-        console.error('Oops! No action there, chief');
-        break;
-    }
-  }
-
-  const addRow = () => {
+  const addRow = (_: MouseEvent<HTMLButtonElement>) => {
     // Put the new row in the second last spot to keep whatever
     // destination language the user has picked intact
     const newRows = [
@@ -41,8 +27,18 @@ function Translator() {
     setRows(newRows);
   }
 
-  const buildRows = () => {
-    return rows.map((row) => {
+  const handleTranslateClick = (_: MouseEvent<HTMLButtonElement>) => {
+    doTranslation();
+  }
+
+  const getSeedPhrase = (_: MouseEvent<HTMLButtonElement>) => {
+    const newPhrase = getRandomSeedPhrase();
+    setInputText(newPhrase);
+    doTranslation(newPhrase);
+  }
+
+  const buildRows = (workingRows: any[]) => {
+    return workingRows.map((row) => {
       return (
         <LanguageRow
           key={row.id}
@@ -53,9 +49,29 @@ function Translator() {
     })
   }
 
-  const doTranslation = async (): Promise<string> => {
+  const handleSeedPhraseBlur = () => {
+    doTranslation();
+  }
+
+  const clearRows = () => {
+    // console.log('CLEAR');
+    const workingRows: Row[] = [];
+    for (let row of rows) {
+      const newRow = {
+        ...row,
+        text: ''
+      }
+
+      workingRows.push(newRow);
+    }
+
+    setRows(workingRows)
+  }
+
+  const doTranslation = async (phrase?: string): Promise<string> => {
+    // clearRows();
     let sourceLang = inputLang;
-    let queryText = inputText;
+    let queryText = phrase || inputText;
     for (let i = 0; i < rows.length; i++) {
       const destLang = rows[i].language;
       const reqUrl = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${sourceLang}&tl=${destLang}&dt=t&q=${queryText}`;
@@ -87,35 +103,55 @@ function Translator() {
   }
 
   return (
-    <>
+    <div className='pageContainer'>
       <h1>Translatr</h1>
+      <p>
+        Translate a phrase through many languages, and see what silly thing comes out the other side!
+      </p>
 
-      <div className='translateRow'>
-        <LangDropdown setLanguage={(lang: string) => { setInputLang(lang) }} />
-        <textarea
-          className='textInput'
-          name="textIn"
-          rows={5}
-          placeholder='Translate something!'
-          onChange={handleQueryChange}
-          value={inputText}
-          onBlur={doTranslation}
-        ></textarea>
-      </div>
+      <main className="contentWrapper">
+        <div className='seedPhraseRow cardElement'>
+          <div className='leftSection'>
+            <h3>Origin Language</h3>
+            <LangDropdown setLanguage={(lang: string) => { setInputLang(lang) }} />
+          </div>
+          <div className='rightSection'>
+            <h3>Seed Phrase</h3>
+            <Textarea
+              className='textInput'
+              name="textIn"
+              rows={5}
+              placeholder='Translate something!'
+              onChange={handleQueryChange}
+              value={inputText}
+              onBlur={handleSeedPhraseBlur}
+            ></Textarea>
+            <div className='buttonsWrapper'>
+              <Button onClick={getSeedPhrase} variant="light">
+                Random Seed Phrase
+              </Button>
+              <Button onClick={handleTranslateClick} variant="light">
+                Translate
+              </Button>
+            </div>
+          </div>
+        </div>
 
-      <div className="rowsContainer">
-        {buildRows()}
-      </div>
+        <div className="rowsContainer cardElement">
+          {buildRows(rows.slice(0, -1))}
+        </div>
 
-      <div className="buttonsContainer">
-        <button onClick={handleClick} value='translate'>
-          Translate
-        </button>
-        <button onClick={handleClick} value='addRow'>
-          Add row
-        </button>
-      </div>
-    </>
+        <div className="resultContainer cardElement">
+          {buildRows([rows[rows.length - 1]])}
+        </div>
+
+        <div className="buttonsContainer">
+          <Button onClick={addRow} value='addRow' variant="light">
+            Add row
+          </Button>
+        </div>
+      </main>
+    </div>
   )
 }
 

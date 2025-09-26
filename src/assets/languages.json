@@ -1,998 +1,998 @@
 [
     {
-        "code": "ab",
+        "value": "ab",
         "label": "Abkhaz"
     },
     {
-        "code": "ace",
+        "value": "ace",
         "label": "Acehnese"
     },
     {
-        "code": "ach",
+        "value": "ach",
         "label": "Acholi"
     },
     {
-        "code": "aa",
+        "value": "aa",
         "label": "Afar"
     },
     {
-        "code": "af",
+        "value": "af",
         "label": "Afrikaans"
     },
     {
-        "code": "sq",
+        "value": "sq",
         "label": "Albanian"
     },
     {
-        "code": "alz",
+        "value": "alz",
         "label": "Alur"
     },
     {
-        "code": "am",
+        "value": "am",
         "label": "Amharic"
     },
     {
-        "code": "ar",
+        "value": "ar",
         "label": "Arabic"
     },
     {
-        "code": "hy",
+        "value": "hy",
         "label": "Armenian"
     },
     {
-        "code": "as",
+        "value": "as",
         "label": "Assamese"
     },
     {
-        "code": "av",
+        "value": "av",
         "label": "Avar"
     },
     {
-        "code": "awa",
+        "value": "awa",
         "label": "Awadhi"
     },
     {
-        "code": "ay",
+        "value": "ay",
         "label": "Aymara"
     },
     {
-        "code": "az",
+        "value": "az",
         "label": "Azerbaijani"
     },
     {
-        "code": "ban",
+        "value": "ban",
         "label": "Balinese"
     },
     {
-        "code": "bal",
+        "value": "bal",
         "label": "Baluchi"
     },
     {
-        "code": "bm",
+        "value": "bm",
         "label": "Bambara"
     },
     {
-        "code": "bci",
+        "value": "bci",
         "label": "Baoulé"
     },
     {
-        "code": "ba",
+        "value": "ba",
         "label": "Bashkir"
     },
     {
-        "code": "eu",
+        "value": "eu",
         "label": "Basque"
     },
     {
-        "code": "btx",
+        "value": "btx",
         "label": "Batak"
     },
     {
-        "code": "bts",
+        "value": "bts",
         "label": "Batak"
     },
     {
-        "code": "bbc",
+        "value": "bbc",
         "label": "Batak"
     },
     {
-        "code": "be",
+        "value": "be",
         "label": "Belarusian"
     },
     {
-        "code": "bem",
+        "value": "bem",
         "label": "Bemba"
     },
     {
-        "code": "bn",
+        "value": "bn",
         "label": "Bengali"
     },
     {
-        "code": "bew",
+        "value": "bew",
         "label": "Betawi"
     },
     {
-        "code": "bho",
+        "value": "bho",
         "label": "Bhojpuri"
     },
     {
-        "code": "bik",
+        "value": "bik",
         "label": "Bikol"
     },
     {
-        "code": "bs",
+        "value": "bs",
         "label": "Bosnian"
     },
     {
-        "code": "br",
+        "value": "br",
         "label": "Breton"
     },
     {
-        "code": "bg",
+        "value": "bg",
         "label": "Bulgarian"
     },
     {
-        "code": "bua",
+        "value": "bua",
         "label": "Buryat"
     },
     {
-        "code": "yue",
+        "value": "yue",
         "label": "Cantonese"
     },
     {
-        "code": "ca",
+        "value": "ca",
         "label": "Catalan"
     },
     {
-        "code": "ceb",
+        "value": "ceb",
         "label": "Cebuano"
     },
     {
-        "code": "ch",
+        "value": "ch",
         "label": "Chamorro"
     },
     {
-        "code": "ce",
+        "value": "ce",
         "label": "Chechen"
     },
     {
-        "code": "ny",
+        "value": "ny",
         "label": "Chichewa"
     },
     {
-        "code": "zh-CN",
+        "value": "zh-CN",
         "label": "Chinese"
     },
     {
-        "code": "zh-TW",
+        "value": "zh-TW",
         "label": "Chinese"
     },
     {
-        "code": "chk",
+        "value": "chk",
         "label": "Chuukese"
     },
     {
-        "code": "cv",
+        "value": "cv",
         "label": "Chuvash"
     },
     {
-        "code": "co",
+        "value": "co",
         "label": "Corsican"
     },
     {
-        "code": "crh",
+        "value": "crh",
         "label": "Crimean"
     },
     {
-        "code": "crh-Latn",
+        "value": "crh-Latn",
         "label": "Crimean"
     },
     {
-        "code": "hr",
+        "value": "hr",
         "label": "Croatian"
     },
     {
-        "code": "cs",
+        "value": "cs",
         "label": "Czech"
     },
     {
-        "code": "da",
+        "value": "da",
         "label": "Danish"
     },
     {
-        "code": "fa-AF",
+        "value": "fa-AF",
         "label": "Dari"
     },
     {
-        "code": "dv",
+        "value": "dv",
         "label": "Dhivehi"
     },
     {
-        "code": "din",
+        "value": "din",
         "label": "Dinka"
     },
     {
-        "code": "doi",
+        "value": "doi",
         "label": "Dogri"
     },
     {
-        "code": "dov",
+        "value": "dov",
         "label": "Dombe"
     },
     {
-        "code": "nl",
+        "value": "nl",
         "label": "Dutch"
     },
     {
-        "code": "dyu",
+        "value": "dyu",
         "label": "Dyula"
     },
     {
-        "code": "dz",
+        "value": "dz",
         "label": "Dzongkha"
     },
     {
-        "code": "en",
+        "value": "en",
         "label": "English"
     },
     {
-        "code": "eo",
+        "value": "eo",
         "label": "Esperanto"
     },
     {
-        "code": "et",
+        "value": "et",
         "label": "Estonian"
     },
     {
-        "code": "ee",
+        "value": "ee",
         "label": "Ewe"
     },
     {
-        "code": "fo",
+        "value": "fo",
         "label": "Faroese"
     },
     {
-        "code": "fj",
+        "value": "fj",
         "label": "Fijian"
     },
     {
-        "code": "tl",
+        "value": "tl",
         "label": "Filipino"
     },
     {
-        "code": "fi",
+        "value": "fi",
         "label": "Finnish"
     },
     {
-        "code": "fon",
+        "value": "fon",
         "label": "Fon"
     },
     {
-        "code": "fr",
+        "value": "fr",
         "label": "French"
     },
     {
-        "code": "fr-CA",
+        "value": "fr-CA",
         "label": "French"
     },
     {
-        "code": "fy",
+        "value": "fy",
         "label": "Frisian"
     },
     {
-        "code": "fur",
+        "value": "fur",
         "label": "Friulian"
     },
     {
-        "code": "ff",
+        "value": "ff",
         "label": "Fulani"
     },
     {
-        "code": "gaa",
+        "value": "gaa",
         "label": "Ga"
     },
     {
-        "code": "gl",
+        "value": "gl",
         "label": "Galician"
     },
     {
-        "code": "ka",
+        "value": "ka",
         "label": "Georgian"
     },
     {
-        "code": "de",
+        "value": "de",
         "label": "German"
     },
     {
-        "code": "el",
+        "value": "el",
         "label": "Greek"
     },
     {
-        "code": "gn",
+        "value": "gn",
         "label": "Guarani"
     },
     {
-        "code": "gu",
+        "value": "gu",
         "label": "Gujarati"
     },
     {
-        "code": "ht",
+        "value": "ht",
         "label": "Haitian"
     },
     {
-        "code": "cnh",
+        "value": "cnh",
         "label": "Hakha"
     },
     {
-        "code": "ha",
+        "value": "ha",
         "label": "Hausa"
     },
     {
-        "code": "haw",
+        "value": "haw",
         "label": "Hawaiian"
     },
     {
-        "code": "iw",
+        "value": "iw",
         "label": "Hebrew"
     },
     {
-        "code": "hil",
+        "value": "hil",
         "label": "Hiligaynon"
     },
     {
-        "code": "hi",
+        "value": "hi",
         "label": "Hindi"
     },
     {
-        "code": "hmn",
+        "value": "hmn",
         "label": "Hmong"
     },
     {
-        "code": "hu",
+        "value": "hu",
         "label": "Hungarian"
     },
     {
-        "code": "hrx",
+        "value": "hrx",
         "label": "Hunsrik"
     },
     {
-        "code": "iba",
+        "value": "iba",
         "label": "Iban"
     },
     {
-        "code": "is",
+        "value": "is",
         "label": "Icelandic"
     },
     {
-        "code": "ig",
+        "value": "ig",
         "label": "Igbo"
     },
     {
-        "code": "ilo",
+        "value": "ilo",
         "label": "Ilocano"
     },
     {
-        "code": "id",
+        "value": "id",
         "label": "Indonesian"
     },
     {
-        "code": "iu-Latn",
+        "value": "iu-Latn",
         "label": "Inuktut"
     },
     {
-        "code": "iu",
+        "value": "iu",
         "label": "Inuktut"
     },
     {
-        "code": "ga",
+        "value": "ga",
         "label": "Irish"
     },
     {
-        "code": "it",
+        "value": "it",
         "label": "Italian"
     },
     {
-        "code": "jam",
+        "value": "jam",
         "label": "Jamaican"
     },
     {
-        "code": "ja",
+        "value": "ja",
         "label": "Japanese"
     },
     {
-        "code": "jw",
+        "value": "jw",
         "label": "Javanese"
     },
     {
-        "code": "kac",
+        "value": "kac",
         "label": "Jingpo"
     },
     {
-        "code": "kl",
+        "value": "kl",
         "label": "Kalaallisut"
     },
     {
-        "code": "kn",
+        "value": "kn",
         "label": "Kannada"
     },
     {
-        "code": "kr",
+        "value": "kr",
         "label": "Kanuri"
     },
     {
-        "code": "pam",
+        "value": "pam",
         "label": "Kapampangan"
     },
     {
-        "code": "kk",
+        "value": "kk",
         "label": "Kazakh"
     },
     {
-        "code": "kha",
+        "value": "kha",
         "label": "Khasi"
     },
     {
-        "code": "km",
+        "value": "km",
         "label": "Khmer"
     },
     {
-        "code": "cgg",
+        "value": "cgg",
         "label": "Kiga"
     },
     {
-        "code": "kg",
+        "value": "kg",
         "label": "Kikongo"
     },
     {
-        "code": "rw",
+        "value": "rw",
         "label": "Kinyarwanda"
     },
     {
-        "code": "ktu",
+        "value": "ktu",
         "label": "Kituba"
     },
     {
-        "code": "trp",
+        "value": "trp",
         "label": "Kokborok"
     },
     {
-        "code": "kv",
+        "value": "kv",
         "label": "Komi"
     },
     {
-        "code": "gom",
+        "value": "gom",
         "label": "Konkani"
     },
     {
-        "code": "ko",
+        "value": "ko",
         "label": "Korean"
     },
     {
-        "code": "kri",
+        "value": "kri",
         "label": "Krio"
     },
     {
-        "code": "ku",
+        "value": "ku",
         "label": "Kurdish"
     },
     {
-        "code": "ckb",
+        "value": "ckb",
         "label": "Kurdish"
     },
     {
-        "code": "ky",
+        "value": "ky",
         "label": "Kyrgyz"
     },
     {
-        "code": "lo",
+        "value": "lo",
         "label": "Lao"
     },
     {
-        "code": "ltg",
+        "value": "ltg",
         "label": "Latgalian"
     },
     {
-        "code": "la",
+        "value": "la",
         "label": "Latin"
     },
     {
-        "code": "lv",
+        "value": "lv",
         "label": "Latvian"
     },
     {
-        "code": "lij",
+        "value": "lij",
         "label": "Ligurian"
     },
     {
-        "code": "li",
+        "value": "li",
         "label": "Limburgish"
     },
     {
-        "code": "ln",
+        "value": "ln",
         "label": "Lingala"
     },
     {
-        "code": "lt",
+        "value": "lt",
         "label": "Lithuanian"
     },
     {
-        "code": "lmo",
+        "value": "lmo",
         "label": "Lombard"
     },
     {
-        "code": "lg",
+        "value": "lg",
         "label": "Luganda"
     },
     {
-        "code": "luo",
+        "value": "luo",
         "label": "Luo"
     },
     {
-        "code": "lb",
+        "value": "lb",
         "label": "Luxembourgish"
     },
     {
-        "code": "mk",
+        "value": "mk",
         "label": "Macedonian"
     },
     {
-        "code": "mad",
+        "value": "mad",
         "label": "Madurese"
     },
     {
-        "code": "mai",
+        "value": "mai",
         "label": "Maithili"
     },
     {
-        "code": "mak",
+        "value": "mak",
         "label": "Makassar"
     },
     {
-        "code": "mg",
+        "value": "mg",
         "label": "Malagasy"
     },
     {
-        "code": "ms",
+        "value": "ms",
         "label": "Malay"
     },
     {
-        "code": "ms-Arab",
+        "value": "ms-Arab",
         "label": "Malay"
     },
     {
-        "code": "ml",
+        "value": "ml",
         "label": "Malayalam"
     },
     {
-        "code": "mt",
+        "value": "mt",
         "label": "Maltese"
     },
     {
-        "code": "mam",
+        "value": "mam",
         "label": "Mam"
     },
     {
-        "code": "gv",
+        "value": "gv",
         "label": "Manx"
     },
     {
-        "code": "mi",
+        "value": "mi",
         "label": "Maori"
     },
     {
-        "code": "mr",
+        "value": "mr",
         "label": "Marathi"
     },
     {
-        "code": "mh",
+        "value": "mh",
         "label": "Marshallese"
     },
     {
-        "code": "mwr",
+        "value": "mwr",
         "label": "Marwadi"
     },
     {
-        "code": "mfe",
+        "value": "mfe",
         "label": "Mauritian"
     },
     {
-        "code": "chm",
+        "value": "chm",
         "label": "Meadow"
     },
     {
-        "code": "mni-Mtei",
+        "value": "mni-Mtei",
         "label": "Meiteilon"
     },
     {
-        "code": "min",
+        "value": "min",
         "label": "Minang"
     },
     {
-        "code": "lus",
+        "value": "lus",
         "label": "Mizo"
     },
     {
-        "code": "mn",
+        "value": "mn",
         "label": "Mongolian"
     },
     {
-        "code": "my",
+        "value": "my",
         "label": "Myanmar"
     },
     {
-        "code": "nhe",
+        "value": "nhe",
         "label": "Nahuatl"
     },
     {
-        "code": "ndc-ZW",
+        "value": "ndc-ZW",
         "label": "Ndau"
     },
     {
-        "code": "nr",
+        "value": "nr",
         "label": "Ndebele"
     },
     {
-        "code": "new",
+        "value": "new",
         "label": "Nepalbhasa"
     },
     {
-        "code": "ne",
+        "value": "ne",
         "label": "Nepali"
     },
     {
-        "code": "bm-Nkoo",
+        "value": "bm-Nkoo",
         "label": "NKo"
     },
     {
-        "code": "no",
+        "value": "no",
         "label": "Norwegian"
     },
     {
-        "code": "nus",
+        "value": "nus",
         "label": "Nuer"
     },
     {
-        "code": "oc",
+        "value": "oc",
         "label": "Occitan"
     },
     {
-        "code": "or",
+        "value": "or",
         "label": "Odia"
     },
     {
-        "code": "om",
+        "value": "om",
         "label": "Oromo"
     },
     {
-        "code": "os",
+        "value": "os",
         "label": "Ossetian"
     },
     {
-        "code": "pag",
+        "value": "pag",
         "label": "Pangasinan"
     },
     {
-        "code": "pap",
+        "value": "pap",
         "label": "Papiamento"
     },
     {
-        "code": "ps",
+        "value": "ps",
         "label": "Pashto"
     },
     {
-        "code": "fa",
+        "value": "fa",
         "label": "Persian"
     },
     {
-        "code": "pl",
+        "value": "pl",
         "label": "Polish"
     },
     {
-        "code": "pt",
+        "value": "pt",
         "label": "Portuguese"
     },
     {
-        "code": "pt-PT",
+        "value": "pt-PT",
         "label": "Portuguese"
     },
     {
-        "code": "pa",
+        "value": "pa",
         "label": "Punjabi"
     },
     {
-        "code": "pa-Arab",
+        "value": "pa-Arab",
         "label": "Punjabi"
     },
     {
-        "code": "qu",
+        "value": "qu",
         "label": "Quechua"
     },
     {
-        "code": "kek",
+        "value": "kek",
         "label": "Qʼeqchiʼ"
     },
     {
-        "code": "rom",
+        "value": "rom",
         "label": "Romani"
     },
     {
-        "code": "ro",
+        "value": "ro",
         "label": "Romanian"
     },
     {
-        "code": "rn",
+        "value": "rn",
         "label": "Rundi"
     },
     {
-        "code": "ru",
+        "value": "ru",
         "label": "Russian"
     },
     {
-        "code": "se",
+        "value": "se",
         "label": "Sami"
     },
     {
-        "code": "sm",
+        "value": "sm",
         "label": "Samoan"
     },
     {
-        "code": "sg",
+        "value": "sg",
         "label": "Sango"
     },
     {
-        "code": "sa",
+        "value": "sa",
         "label": "Sanskrit"
     },
     {
-        "code": "sat-Latn",
+        "value": "sat-Latn",
         "label": "Santali"
     },
     {
-        "code": "sat",
+        "value": "sat",
         "label": "Santali"
     },
     {
-        "code": "gd",
+        "value": "gd",
         "label": "Scots"
     },
     {
-        "code": "nso",
+        "value": "nso",
         "label": "Sepedi"
     },
     {
-        "code": "sr",
+        "value": "sr",
         "label": "Serbian"
     },
     {
-        "code": "st",
+        "value": "st",
         "label": "Sesotho"
     },
     {
-        "code": "crs",
+        "value": "crs",
         "label": "Seychellois"
     },
     {
-        "code": "shn",
+        "value": "shn",
         "label": "Shan"
     },
     {
-        "code": "sn",
+        "value": "sn",
         "label": "Shona"
     },
     {
-        "code": "scn",
+        "value": "scn",
         "label": "Sicilian"
     },
     {
-        "code": "szl",
+        "value": "szl",
         "label": "Silesian"
     },
     {
-        "code": "sd",
+        "value": "sd",
         "label": "Sindhi"
     },
     {
-        "code": "si",
+        "value": "si",
         "label": "Sinhala"
     },
     {
-        "code": "sk",
+        "value": "sk",
         "label": "Slovak"
     },
     {
-        "code": "sl",
+        "value": "sl",
         "label": "Slovenian"
     },
     {
-        "code": "so",
+        "value": "so",
         "label": "Somali"
     },
     {
-        "code": "es",
+        "value": "es",
         "label": "Spanish"
     },
     {
-        "code": "su",
+        "value": "su",
         "label": "Sundanese"
     },
     {
-        "code": "sus",
+        "value": "sus",
         "label": "Susu"
     },
     {
-        "code": "sw",
+        "value": "sw",
         "label": "Swahili"
     },
     {
-        "code": "ss",
+        "value": "ss",
         "label": "Swati"
     },
     {
-        "code": "sv",
+        "value": "sv",
         "label": "Swedish"
     },
     {
-        "code": "ty",
+        "value": "ty",
         "label": "Tahitian"
     },
     {
-        "code": "tg",
+        "value": "tg",
         "label": "Tajik"
     },
     {
-        "code": "ber-Latn",
+        "value": "ber-Latn",
         "label": "Tamazight"
     },
     {
-        "code": "ber",
+        "value": "ber",
         "label": "Tamazight"
     },
     {
-        "code": "ta",
+        "value": "ta",
         "label": "Tamil"
     },
     {
-        "code": "tt",
+        "value": "tt",
         "label": "Tatar"
     },
     {
-        "code": "te",
+        "value": "te",
         "label": "Telugu"
     },
     {
-        "code": "tet",
+        "value": "tet",
         "label": "Tetum"
     },
     {
-        "code": "th",
+        "value": "th",
         "label": "Thai"
     },
     {
-        "code": "bo",
+        "value": "bo",
         "label": "Tibetan"
     },
     {
-        "code": "ti",
+        "value": "ti",
         "label": "Tigrinya"
     },
     {
-        "code": "tiv",
+        "value": "tiv",
         "label": "Tiv"
     },
     {
-        "code": "tpi",
+        "value": "tpi",
         "label": "Tok"
     },
     {
-        "code": "to",
+        "value": "to",
         "label": "Tongan"
     },
     {
-        "code": "lua",
+        "value": "lua",
         "label": "Tshiluba"
     },
     {
-        "code": "ts",
+        "value": "ts",
         "label": "Tsonga"
     },
     {
-        "code": "tn",
+        "value": "tn",
         "label": "Tswana"
     },
     {
-        "code": "tcy",
+        "value": "tcy",
         "label": "Tulu"
     },
     {
-        "code": "tum",
+        "value": "tum",
         "label": "Tumbuka"
     },
     {
-        "code": "tr",
+        "value": "tr",
         "label": "Turkish"
     },
     {
-        "code": "tk",
+        "value": "tk",
         "label": "Turkmen"
     },
     {
-        "code": "tyv",
+        "value": "tyv",
         "label": "Tuvan"
     },
     {
-        "code": "ak",
+        "value": "ak",
         "label": "Twi"
     },
     {
-        "code": "udm",
+        "value": "udm",
         "label": "Udmurt"
     },
     {
-        "code": "uk",
+        "value": "uk",
         "label": "Ukrainian"
     },
     {
-        "code": "ur",
+        "value": "ur",
         "label": "Urdu"
     },
     {
-        "code": "ug",
+        "value": "ug",
         "label": "Uyghur"
     },
     {
-        "code": "uz",
+        "value": "uz",
         "label": "Uzbek"
     },
     {
-        "code": "ve",
+        "value": "ve",
         "label": "Venda"
     },
     {
-        "code": "vec",
+        "value": "vec",
         "label": "Venetian"
     },
     {
-        "code": "vi",
+        "value": "vi",
         "label": "Vietnamese"
     },
     {
-        "code": "war",
+        "value": "war",
         "label": "Waray"
     },
     {
-        "code": "cy",
+        "value": "cy",
         "label": "Welsh"
     },
     {
-        "code": "wo",
+        "value": "wo",
         "label": "Wolof"
     },
     {
-        "code": "xh",
+        "value": "xh",
         "label": "Xhosa"
     },
     {
-        "code": "sah",
+        "value": "sah",
         "label": "Yakut"
     },
     {
-        "code": "yi",
+        "value": "yi",
         "label": "Yiddish"
     },
     {
-        "code": "yo",
+        "value": "yo",
         "label": "Yoruba"
     },
     {
-        "code": "yua",
+        "value": "yua",
         "label": "Yucatec"
     },
     {
-        "code": "zap",
+        "value": "zap",
         "label": "Zapotec"
     },
     {
-        "code": "zu",
+        "value": "zu",
         "label": "Zulu"
     }
 ]

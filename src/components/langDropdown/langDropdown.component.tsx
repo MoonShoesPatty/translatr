@@ -1,31 +1,21 @@
 
 import './langDropdown.component.css';
-import { ChangeEvent } from 'react';
 import languages from '../../assets/languages.json';
+import { Select } from '@mantine/core';
 
 interface Props {
   setLanguage: (lang: string) => void;
   defaultLanguage?: string;
+  disabled?: boolean;
 }
 
-function LangDropdown({ setLanguage, defaultLanguage = 'en' }: Props) {
-  const buildRows = () => {
-    return languages.map((lang) => {
-      return (<option key={lang.code} value={lang.code}>{lang.label}</option>)
-    });
-  }
-
-  const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    e.preventDefault();
-    setLanguage(e.target.value);
+function LangDropdown({ setLanguage, defaultLanguage = 'en', disabled = false }: Props) {
+  const handleChange = (value: string | null) => {
+    setLanguage(String(value));
   }
 
   return (
-    <>
-      <select name="languageInput" onChange={handleChange} defaultValue={defaultLanguage}>
-        {buildRows()}
-      </select>
-    </>
+      <Select disabled={disabled} onChange={handleChange} value={defaultLanguage} data={languages} />
   )
 }
 

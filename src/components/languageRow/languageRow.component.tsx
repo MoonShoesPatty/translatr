@@ -2,6 +2,7 @@ import './languageRow.component.css'
 import LangDropdown from "../langDropdown/langDropdown.component";
 import { Row } from '../../models';
 import { MouseEvent } from 'react';
+import { Button, Loader } from '@mantine/core';
 
 interface Props {
   row: Row;
@@ -26,9 +27,14 @@ function LanguageRow({ row, handleRemove, updateCallback }: Props) {
       { label: 'X', action: 'remove', tooltip: 'Remove row' }
     ];
     return buttons.map((actionButton) => {
-      return (<button value={actionButton.action} title={actionButton.tooltip} onClick={handleActionButtonClick}>
+      return (<Button
+        key={actionButton.action}
+        value={actionButton.action}
+        title={actionButton.tooltip}
+        onClick={handleActionButtonClick}
+        variant="subtle">
         {actionButton.label}
-      </button>);
+      </Button>);
     });
   }
 
@@ -44,12 +50,26 @@ function LanguageRow({ row, handleRemove, updateCallback }: Props) {
     }
   }
 
+  const buildText = () => {
+    if (row.text != '') {
+      return (
+        <p>
+          {row.text}
+        </p>
+      )
+    } else {
+      return (
+        <Loader type="dots" />
+      )
+    }
+  }
+
   return (
     <div className='rowContainer'>
       <LangDropdown setLanguage={handleLanguageUpdate} defaultLanguage={row.language} />
-      <p className='textContainer'>
-        {row.text}
-      </p>
+      <div className="textContainer">
+        {buildText()}
+      </div>
       <div className="actions">
         {buildButtons()}
       </div>

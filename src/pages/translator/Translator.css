@@ -1,24 +1,88 @@
-#root {
-  max-width: 1280px;
-  width: 100%;
+h1 {
+  font-variant: small-caps;
+  letter-spacing: 1px;
+}
+
+.pageContainer {
   margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-  box-sizing: border-box;
+  max-width: 900px;
+  padding: 0 50px;
+}
+
+.cardElement {
+  border: 1px solid var(--mantine-color-neutralGrey-3);
+  background-color: var(--mantine-color-warmWhite-0);
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
+  margin-bottom: 16px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.contentWrapper {
+  /* border: 1px solid black; */
 }
 
 .rowsContainer {
   display: flex;
   flex-direction: column;
   width: 100%;
+  /* border: 1px solid  var(--mantine-color-electricBlue-6); */
 }
 
-.translateRow {
+/* .rowContainer:last-child {
+  border-top: 3px solid hotpink;
+  margin-top: 32px;
+} */
+
+.seedPhraseRow {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding: 15px;
+  /* padding: 15px; */
+  /* border: 1px solid  var(--mantine-color-electricBlue-6); */
+  /* margin-bottom: 32px; */
+  /* position: relative; */
 }
+
+.seedPhraseRow .leftSection {
+  background-color: var(--mantine-color-electricBlue-4);
+  padding: 16px;
+  align-self: stretch;
+/*   
+  display: flex;
+  flex-direction: column;
+  justify-content: center; */
+  /* align-items: center; */
+}
+
+.seedPhraseRow h3 {
+  /* color: white; */
+  font-variant: small-caps;
+  margin: 0;
+}
+
+.seedPhraseRow .rightSection {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 16px;
+  justify-content: flex-end;
+}
+
+.seedPhraseRow .rightSection textarea {
+  /* background-color: orange; */
+  width: 100%;
+}
+
+.seedPhraseRow .rightSection .buttonsWrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.seedPhraseRow button {
+  margin: 8px 0 0 8px;
+}
+
 
 .textInput {
   width: 100%;

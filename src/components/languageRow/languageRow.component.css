@@ -1,9 +1,12 @@
 .rowContainer {
     border-top: 1px solid white;
-    padding: 15px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
+}
+
+.rowContainer p {
+    margin: 16px;
 }
 
 .textContainer {
