@@ -15,7 +15,7 @@ function LangDropdown({ setLanguage, defaultLanguage = 'en', disabled = false }:
   }
 
   return (
-      <Select disabled={disabled} onChange={handleChange} value={defaultLanguage} data={languages} />
+    <Select disabled={disabled} onChange={handleChange} value={defaultLanguage} data={languages} />
   )
 }
 

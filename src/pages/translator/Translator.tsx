@@ -1,20 +1,34 @@
 import './Translator.css';
 import LanguageRow from '@components/languageRow/languageRow.component';
-import { ChangeEvent, MouseEvent, useEffect, useState } from 'react';
+import { ChangeEvent, MouseEvent, useEffect, useRef, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { Row } from '@models/index';
 import LangDropdown from '@components/langDropdown/langDropdown.component';
-import { getRandomLang, getRandomSeedPhrase } from '@services/language.service'
+import { getRandomLang, getRandomSeedPhrase } from '@services/language.service';
+import { translate } from '@services/translate.service';
 import { Button, Textarea } from '@mantine/core';
+
+import { FaDice } from 'react-icons/fa';
+import { IoMdSend, IoMdAddCircle } from "react-icons/io";
 
 function Translator() {
   const [rows, setRows] = useState(ROWS_DEFAULT);
   const [inputLang, setInputLang] = useState('en');
   const [inputText, setInputText] = useState('Terrible translation, at your fingertips!');
+  const translationIdRef = useRef(0);
 
-  useEffect(() => {
-    doTranslation();
-  }, rows);
+  const clearRows = () => {
+    const workingRows: Row[] = [];
+    for (let row of rows) {
+      const newRow = {
+        ...row,
+        text: ''
+      }
+      workingRows.push(newRow);
+    }
+    setRows(workingRows);
+    return workingRows;
+  }
 
   const addRow = (_: MouseEvent<HTMLButtonElement>) => {
     // Put the new row in the second last spot to keep whatever
@@ -28,13 +42,13 @@ function Translator() {
   }
 
   const handleTranslateClick = (_: MouseEvent<HTMLButtonElement>) => {
-    doTranslation();
+    startTranslation();
   }
 
   const getSeedPhrase = (_: MouseEvent<HTMLButtonElement>) => {
     const newPhrase = getRandomSeedPhrase();
     setInputText(newPhrase);
-    doTranslation(newPhrase);
+    startTranslation(newPhrase);
   }
 
   const buildRows = (workingRows: any[]) => {
@@ -44,50 +58,41 @@ function Translator() {
           key={row.id}
           row={row}
           handleRemove={handleRowRemove}
-          updateCallback={doTranslation} />
+          updateCallback={startTranslation} />
       );
     })
   }
 
   const handleSeedPhraseBlur = () => {
-    doTranslation();
+    startTranslation();
   }
 
-  const clearRows = () => {
-    // console.log('CLEAR');
-    const workingRows: Row[] = [];
-    for (let row of rows) {
-      const newRow = {
-        ...row,
-        text: ''
-      }
+  const startTranslation = async (phrase?: string): Promise<void> => {
+    const currentTranslationId = ++translationIdRef.current;
 
-      workingRows.push(newRow);
-    }
-
-    setRows(workingRows)
-  }
-
-  const doTranslation = async (phrase?: string): Promise<string> => {
-    // clearRows();
     let sourceLang = inputLang;
     let queryText = phrase || inputText;
-    for (let i = 0; i < rows.length; i++) {
-      const destLang = rows[i].language;
-      const reqUrl = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${sourceLang}&tl=${destLang}&dt=t&q=${queryText}`;
-      const response = await fetch(reqUrl);
-      const result = await response.json();
-      rows[i].text = result[0][0][0] as string;
+    const newRows = clearRows();
 
-      // FOR NEXT ITERATION
-      sourceLang = rows[i].language;
-      queryText = rows[i].text;
+    for (let i = 0; i < newRows.length; i++) {
+      const destLang = newRows[i].language;
 
-      setRows([...rows]);
+      const translatedText = await translate(sourceLang, destLang, queryText);
+
+      if (translationIdRef.current !== currentTranslationId) {
+        console.log(`Translation interrupted, exiting early. ID: ${translationIdRef.current}`);
+        return;
+      }
+
+      newRows[i].text = translatedText;
+
+      sourceLang = newRows[i].language;
+      queryText = newRows[i].text;
+
+      setRows([...newRows]);
     }
-
-    return new Promise((resolve) => resolve(''));
   }
+
 
   const handleQueryChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     e.preventDefault();
@@ -106,13 +111,13 @@ function Translator() {
     <div className='pageContainer'>
       <h1>Translatr</h1>
       <p>
-        Translate a phrase through many languages, and see what silly thing comes out the other side!
+        Translate a phrase through many languages, see what comes out the other side!
       </p>
 
       <main className="contentWrapper">
         <div className='seedPhraseRow cardElement'>
           <div className='leftSection'>
-            <h3>Origin Language</h3>
+            <h3>Language</h3>
             <LangDropdown setLanguage={(lang: string) => { setInputLang(lang) }} />
           </div>
           <div className='rightSection'>
@@ -127,10 +132,10 @@ function Translator() {
               onBlur={handleSeedPhraseBlur}
             ></Textarea>
             <div className='buttonsWrapper'>
-              <Button onClick={getSeedPhrase} variant="light">
+              <Button onClick={getSeedPhrase} variant="light" rightSection={<FaDice size='1.5em' />}>
                 Random Seed Phrase
               </Button>
-              <Button onClick={handleTranslateClick} variant="light">
+              <Button onClick={handleTranslateClick} variant="light" rightSection={<IoMdSend size='1.5em' />}>
                 Translate
               </Button>
             </div>
@@ -141,14 +146,14 @@ function Translator() {
           {buildRows(rows.slice(0, -1))}
         </div>
 
-        <div className="resultContainer cardElement">
-          {buildRows([rows[rows.length - 1]])}
-        </div>
-
-        <div className="buttonsContainer">
-          <Button onClick={addRow} value='addRow' variant="light">
+        <div className="addRowContainer">
+          <Button onClick={addRow} value='addRow' variant="light" rightSection={<IoMdAddCircle size='1.5em' />}>
             Add row
           </Button>
+        </div>
+
+        <div className="resultContainer cardElement">
+          {buildRows([rows[rows.length - 1]])}
         </div>
       </main>
     </div>
