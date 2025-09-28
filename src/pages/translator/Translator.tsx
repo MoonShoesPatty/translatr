@@ -17,49 +17,9 @@ function Translator() {
   const [inputText, setInputText] = useState('Terrible translation, at your fingertips!');
   const translationIdRef = useRef(0);
 
-  const addRow = (_: MouseEvent<HTMLButtonElement>) => {
-    if (rows.length > 25) {
-      console.error('Chill, 25 is plenty.')
-      return;
-    }
-
-    // Put the new row in the second last spot to keep whatever
-    // destination language the user has picked intact
-    const newRows = [
-      ...rows.slice(0, rows.length - 1),
-      new RowClass(getRandomLang()),
-      rows[rows.length - 1]
-    ];
-
-    setRows(newRows);
-    startTranslation(undefined, newRows);
-  }
-
-  const handleTranslateClick = (_: MouseEvent<HTMLButtonElement>) => {
+  useEffect(() => {
     startTranslation();
-  }
-
-  const getSeedPhrase = (_: MouseEvent<HTMLButtonElement>) => {
-    const newPhrase = getRandomSeedPhrase();
-    setInputText(newPhrase);
-    startTranslation(newPhrase);
-  }
-
-  const buildRows = (workingRows: any[]) => {
-    return workingRows.map((row) => {
-      return (
-        <LanguageRow
-          key={row.id}
-          row={row}
-          handleRemove={handleRowRemove}
-          updateCallback={startTranslation} />
-      );
-    })
-  }
-
-  const handleSeedPhraseBlur = () => {
-    startTranslation();
-  }
+  }, []);
 
   const startTranslation = async (phrase?: string, workingRows?: Row[]): Promise<void> => {
     const currentTranslationId = ++translationIdRef.current;
@@ -99,8 +59,8 @@ function Translator() {
     if (index >= currentRows.length) {
       return;
     }
-    const destLang = currentRows[index].language;
 
+    const destLang = currentRows[index].language;
     const translatedText = await translate(sourceLang, destLang, queryText);
 
     if (translationIdRef.current !== translationId) {
@@ -117,6 +77,44 @@ function Translator() {
     translateStep(translationId, index + 1, destLang, translatedText, currentRows);
   };
 
+  const addRow = (_: MouseEvent<HTMLButtonElement>) => {
+    if (rows.length > 25) {
+      console.error('Chill, 25 is plenty.');
+      return;
+    }
+
+    const newRows = [
+      ...rows.slice(0, rows.length - 1),
+      new RowClass(getRandomLang()),
+      rows[rows.length - 1]
+    ];
+
+    setRows(newRows);
+    startTranslation(undefined, newRows);
+  }
+
+  const handleRowRemove = (id: string) => {
+    const newRows = rows.filter(row => row.id !== id);
+    setRows(newRows);
+    startTranslation(undefined, newRows);
+  }
+
+  const buildRows = (workingRows: any[]) => {
+    return workingRows.map((row) => (
+      <LanguageRow
+        key={row.id}
+        row={row}
+        handleRemove={handleRowRemove}
+        updateCallback={startTranslation}
+      />
+    ));
+  }
+
+  const handleQueryChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    e.preventDefault();
+    setInputText(e.target.value);
+  }
+
   const handleTextareaKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
@@ -124,18 +122,18 @@ function Translator() {
     }
   };
 
-  const handleQueryChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    e.preventDefault();
-    setInputText((e.target as HTMLTextAreaElement).value)
+  const handleSeedPhraseBlur = () => {
+    startTranslation();
   }
 
-  const handleRowRemove = (id: string) => {
-    const newRows = rows.filter(row => {
-      return row.id != id;
-    });
+  const handleTranslateClick = (_: MouseEvent<HTMLButtonElement>) => {
+    startTranslation();
+  }
 
-    setRows(newRows);
-    startTranslation(undefined, newRows);
+  const getSeedPhrase = (_: MouseEvent<HTMLButtonElement>) => {
+    const newPhrase = getRandomSeedPhrase();
+    setInputText(newPhrase);
+    startTranslation(newPhrase);
   }
 
   return (
@@ -162,7 +160,7 @@ function Translator() {
               onKeyDown={handleTextareaKeyDown}
               value={inputText}
               onBlur={handleSeedPhraseBlur}
-            ></Textarea>
+            />
             <div className='buttonsWrapper'>
               <Button onClick={getSeedPhrase} variant="light" rightSection={<FaDice size='1.5em' />}>
                 Random Seed Phrase
