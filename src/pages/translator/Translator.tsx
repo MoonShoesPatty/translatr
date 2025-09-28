@@ -17,20 +17,12 @@ function Translator() {
   const [inputText, setInputText] = useState('Terrible translation, at your fingertips!');
   const translationIdRef = useRef(0);
 
-  const clearRows = () => {
-    const workingRows: Row[] = [];
-    for (let row of rows) {
-      const newRow = {
-        ...row,
-        text: ''
-      }
-      workingRows.push(newRow);
-    }
-    setRows(workingRows);
-    return workingRows;
-  }
-
   const addRow = (_: MouseEvent<HTMLButtonElement>) => {
+    if (rows.length > 25) {
+      console.error('Chill, 25 is plenty.')
+      return;
+    }
+
     // Put the new row in the second last spot to keep whatever
     // destination language the user has picked intact
     const newRows = [
@@ -38,7 +30,9 @@ function Translator() {
       new RowClass(getRandomLang()),
       rows[rows.length - 1]
     ];
+
     setRows(newRows);
+    startTranslation(undefined, newRows);
   }
 
   const handleTranslateClick = (_: MouseEvent<HTMLButtonElement>) => {
@@ -67,32 +61,68 @@ function Translator() {
     startTranslation();
   }
 
-  const startTranslation = async (phrase?: string): Promise<void> => {
+  const startTranslation = async (phrase?: string, workingRows?: Row[]): Promise<void> => {
     const currentTranslationId = ++translationIdRef.current;
 
-    let sourceLang = inputLang;
-    let queryText = phrase || inputText;
-    const newRows = clearRows();
-
-    for (let i = 0; i < newRows.length; i++) {
-      const destLang = newRows[i].language;
-
-      const translatedText = await translate(sourceLang, destLang, queryText);
-
-      if (translationIdRef.current !== currentTranslationId) {
-        console.log(`Translation interrupted, exiting early. ID: ${translationIdRef.current}`);
-        return;
-      }
-
-      newRows[i].text = translatedText;
-
-      sourceLang = newRows[i].language;
-      queryText = newRows[i].text;
-
-      setRows([...newRows]);
+    if (workingRows == null) {
+      workingRows = [...rows];
     }
-  }
 
+    const clearedRows = workingRows.map(row => ({ ...row, text: '' }));
+    setRows(clearedRows);
+
+    const sourceLang = inputLang;
+    const initialText = phrase || inputText;
+
+    console.log(`Translate starting from: ${initialText}`)
+
+    translateStep(currentTranslationId, 0, sourceLang, initialText, clearedRows);
+  };
+
+  const translateStep = async (
+    translationId: number,
+    index: number,
+    sourceLang: string,
+    queryText: string,
+    workingRows: Row[]
+  ): Promise<void> => {
+    if (translationIdRef.current !== translationId) {
+      console.log(`Translation interrupted at index ${index}`);
+      return;
+    }
+
+    workingRows.forEach((row) => {
+      console.log(`Row: ${row.text}`)
+    })
+
+    const currentRows = [...workingRows];
+    if (index >= currentRows.length) {
+      return;
+    }
+    const destLang = currentRows[index].language;
+
+    const translatedText = await translate(sourceLang, destLang, queryText);
+
+    if (translationIdRef.current !== translationId) {
+      console.log(`Translation interrupted after async at index ${index}`);
+      return;
+    }
+
+    currentRows[index] = {
+      ...currentRows[index],
+      text: translatedText,
+    };
+
+    setRows(currentRows);
+    translateStep(translationId, index + 1, destLang, translatedText, currentRows);
+  };
+
+  const handleTextareaKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      startTranslation();
+    }
+  };
 
   const handleQueryChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     e.preventDefault();
@@ -105,6 +135,7 @@ function Translator() {
     });
 
     setRows(newRows);
+    startTranslation(undefined, newRows);
   }
 
   return (
@@ -128,6 +159,7 @@ function Translator() {
               rows={5}
               placeholder='Translate something!'
               onChange={handleQueryChange}
+              onKeyDown={handleTextareaKeyDown}
               value={inputText}
               onBlur={handleSeedPhraseBlur}
             ></Textarea>
