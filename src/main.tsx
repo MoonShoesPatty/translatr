@@ -12,8 +12,7 @@ createRoot(document.getElementById('root')!).render(
     <MantineProvider theme={customTheme}>
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<Translator />} />
-          <Route path='*' element={<>404</>} />
+          <Route path='*' element={<Translator />} />
         </Routes>
       </BrowserRouter>
     </MantineProvider>
