@@ -8,6 +8,5 @@ export const getRandomLang = () => {
 
 export const getRandomSeedPhrase = () => {
     const index = Math.floor(Math.random() * seedPhrases.length);
-    console.log(seedPhrases[index])
     return seedPhrases[index];
 }

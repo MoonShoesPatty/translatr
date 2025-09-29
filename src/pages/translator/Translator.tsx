@@ -34,8 +34,6 @@ function Translator() {
     const sourceLang = inputLang;
     const initialText = phrase || inputText;
 
-    console.log(`Translate starting from: ${initialText}`)
-
     translateStep(currentTranslationId, 0, sourceLang, initialText, clearedRows);
   };
 
@@ -50,10 +48,6 @@ function Translator() {
       console.log(`Translation interrupted at index ${index}`);
       return;
     }
-
-    workingRows.forEach((row) => {
-      console.log(`Row: ${row.text}`)
-    })
 
     const currentRows = [...workingRows];
     if (index >= currentRows.length) {
@@ -99,13 +93,14 @@ function Translator() {
     startTranslation(undefined, newRows);
   }
 
-  const buildRows = (workingRows: any[]) => {
+  const buildRows = (workingRows: any[], removable: boolean = true) => {
     return workingRows.map((row) => (
       <LanguageRow
         key={row.id}
         row={row}
         handleRemove={handleRowRemove}
         updateCallback={startTranslation}
+        removable={removable}
       />
     ));
   }
@@ -122,26 +117,27 @@ function Translator() {
     }
   };
 
-  const handleSeedPhraseBlur = () => {
-    startTranslation();
-  }
-
   const handleTranslateClick = (_: MouseEvent<HTMLButtonElement>) => {
     startTranslation();
   }
 
   const getSeedPhrase = (_: MouseEvent<HTMLButtonElement>) => {
-    const newPhrase = getRandomSeedPhrase();
+    let newPhrase = null;
+    do {
+      newPhrase = getRandomSeedPhrase();
+    } while (newPhrase == inputText);
     setInputText(newPhrase);
     startTranslation(newPhrase);
   }
 
   return (
     <div className='pageContainer'>
-      <h1>Translatr</h1>
-      <p>
-        Translate a phrase through many languages, see what comes out the other side!
-      </p>
+      <div className="titleSection">
+        <h1>Translatr</h1>
+        <p>
+          Translate a phrase through many languages, see what comes out the other side!
+        </p>
+      </div>
 
       <main className="contentWrapper">
         <div className='seedPhraseRow cardElement'>
@@ -159,11 +155,10 @@ function Translator() {
               onChange={handleQueryChange}
               onKeyDown={handleTextareaKeyDown}
               value={inputText}
-              onBlur={handleSeedPhraseBlur}
             />
             <div className='buttonsWrapper'>
               <Button onClick={getSeedPhrase} variant="light" rightSection={<FaDice size='1.5em' />}>
-                Random Seed Phrase
+                Random Phrase
               </Button>
               <Button onClick={handleTranslateClick} variant="light" rightSection={<IoMdSend size='1.5em' />}>
                 Translate
@@ -183,9 +178,15 @@ function Translator() {
         </div>
 
         <div className="resultContainer cardElement">
-          {buildRows([rows[rows.length - 1]])}
+          {buildRows([rows[rows.length - 1]], false)}
         </div>
+
       </main>
+      <footer className="creditContainer">
+        <p>
+          Pat Johnston, 2025
+        </p>
+      </footer>
     </div>
   )
 }

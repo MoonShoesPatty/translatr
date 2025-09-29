@@ -9,6 +9,50 @@ h1 {
   padding: 0 50px;
 }
 
+.titleSection {
+  margin-top: 50px;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.titleSection h1 {
+  color: var(--mantine-color-neutralGrey-8);
+  margin: 0;
+  font-size: 2.5rem;
+  position: relative;
+  display: inline;
+}
+
+.titleSection h1::before,
+.titleSection h1::after {
+  content: '';
+  position: absolute;
+  top: 61%;
+  width: 50px;
+  /* Adjust line length */
+  height: 2px;
+  /* Line thickness */
+  background-color: var(--mantine-color-electricBlue-3);
+  transform: translateY(-50%);
+}
+
+.titleSection h1::before {
+  left: -16px;
+  transform: translate(-100%, -50%);
+  /* Move fully to the left + vertical centering */
+}
+
+.titleSection h1::after {
+  right: -16px;
+  transform: translate(100%, -50%);
+  /* Move fully to the right + vertical centering */
+}
+
+.titleSection p {
+  margin: 0;
+  color: var(--mantine-color-neutralGrey-8);
+}
+
 .cardElement {
   border: 1px solid var(--mantine-color-neutralGrey-3);
   background-color: var(--mantine-color-warmWhite-0);
@@ -40,13 +84,18 @@ h1 {
 }
 
 .seedPhraseRow .leftSection {
-  background-color: var(--mantine-color-electricBlue-4);
+  border-right: 1px solid var(--mantine-color-neutralGrey-3);
+  /* background: linear-gradient(to right, var(--mantine-color-electricBlue-3), var(--mantine-color-electricBlue-2)); */
+  background-color: var(--mantine-color-electricBlue-3);
   align-self: stretch;
 }
 
 .seedPhraseRow h3 {
   font-variant: small-caps;
+  letter-spacing: 1px;
   margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
 }
 
 .seedPhraseRow .rightSection {
@@ -70,6 +119,11 @@ h1 {
   justify-content: flex-end;
 }
 
+.seedPhraseRow .rightSection .buttonsWrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .seedPhraseRow button {
   margin: 8px 0 0 8px;
 }
@@ -85,4 +139,35 @@ h1 {
 .pageContainer button:hover,
 .removeRowButton:hover svg {
   color: var(--mantine-color-electricBlue-6)
+}
+
+.creditContainer {
+  width: 95%;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  color: var(--mantine-color-neutralGrey-4);
+}
+
+.dropdownContainer {
+  width: 200px;
+}
+
+@media screen and (max-width: 568px) {
+  .pageContainer {
+    padding: 10px;
+  }
+
+  .titleSection {
+    margin-top: 16px;
+  }
+
+  .seedPhraseRow .rightSection .buttonsWrapper {
+    flex-direction: column;
+  }
+
+  .creditContainer {
+    margin: 0;
+  }
 }

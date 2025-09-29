@@ -8,6 +8,7 @@ interface Props {
   row: Row;
   handleRemove: (id: string) => void;
   updateCallback: () => void;
+  removable?: boolean;
 }
 
 interface ActionButton {
@@ -15,26 +16,28 @@ interface ActionButton {
   tooltip?: string;
 }
 
-function LanguageRow({ row, handleRemove, updateCallback }: Props) {
+function LanguageRow({ row, handleRemove, updateCallback, removable = true }: Props) {
   const handleLanguageUpdate = (lang: string) => {
     row.language = lang;
     updateCallback();
   }
 
   const buildButtons = () => {
-    const buttons: ActionButton[] = [
-      { action: 'remove', tooltip: 'Remove row' }
-    ];
-    return buttons.map((actionButton) => {
-      return (<Button
-        className='removeRowButton'
-        key={actionButton.action}
-        title={actionButton.tooltip}
-        onClick={() => { handleRemove(row.id) }}
-        variant="transparent">
-        <IoMdCloseCircle size='1.5em' />
-      </Button>);
-    });
+    if (removable) {
+      const buttons: ActionButton[] = [
+        { action: 'remove', tooltip: 'Remove row' }
+      ];
+      return buttons.map((actionButton) => {
+        return (<Button
+          className='removeRowButton'
+          key={actionButton.action}
+          title={actionButton.tooltip}
+          onClick={() => { handleRemove(row.id) }}
+          variant="transparent">
+          <IoMdCloseCircle size='1.5em' />
+        </Button>);
+      });
+    }
   }
 
   const buildText = () => {
