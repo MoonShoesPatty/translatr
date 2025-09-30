@@ -143,7 +143,7 @@ function Translator() {
         <div className='seedPhraseRow cardElement'>
           <div className='leftSection'>
             <h3>Language</h3>
-            <LangDropdown setLanguage={(lang: string) => { setInputLang(lang) }} />
+            <LangDropdown setLanguage={(lang: string) => { setInputLang(lang) }} defaultLanguage={inputLang} />
           </div>
           <div className='rightSection'>
             <h3>Seed Phrase</h3>
